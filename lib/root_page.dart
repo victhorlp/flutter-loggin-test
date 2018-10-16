@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loggin_test/login_page.dart';
 import 'package:flutter_loggin_test/auth.dart';
+import 'package:flutter_loggin_test/home_page.dart';
 
 enum AuthStatus {
   notSignedIn,
@@ -21,10 +22,9 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
-    //Check the current status of the user
     widget.auth.currentUser().then((userId){
       setState(() {
-        // authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+        authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
       });
     });
   }
@@ -32,6 +32,12 @@ class _RootPageState extends State<RootPage> {
   void _signedIn() {
     setState(() {
       authStatus = AuthStatus.signedIn;
+    });
+  } 
+
+  void _signedOut() {
+    setState(() {
+      authStatus = AuthStatus.notSignedIn;
     });
   } 
 
@@ -44,10 +50,9 @@ class _RootPageState extends State<RootPage> {
           onSignedIn: _signedIn,
         );
       case AuthStatus.signedIn:
-        return new Scaffold(
-          body: new Container(
-            child: new Text('Hello Govner!')
-          )
+        return new HomePage(
+          auth: widget.auth,
+          onSignedOut: _signedOut,
         );
     }
   }
