@@ -24,7 +24,7 @@ class _RootPageState extends State<RootPage> {
     //Check the current status of the user
     widget.auth.currentUser().then((userId){
       setState(() {
-        authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+        // authStatus = userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
       });
     });
   }
