@@ -10,7 +10,6 @@ class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _loginPageState();
 }
-
 enum FormType {
   login,
   register
@@ -50,6 +49,12 @@ class _loginPageState extends State<LoginPage> {
         widget.onSignedIn();
       }
       catch (e) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {return  AlertDialog(
+            title: new Text(e.toString(), style: new TextStyle(color: Colors.red),));
+          }
+        );
         print('Errors: $e');
       }
     }
@@ -86,7 +91,7 @@ class _loginPageState extends State<LoginPage> {
       ),
       floatingActionButtonLocation:  FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.widgets),
+        child: const Icon(Icons.widgets, size: 30.0,),
         onPressed: (){Navigator.of(context).push(
                         new MaterialPageRoute(builder: (BuildContext context)
                         =>new HtmlContent()));},
@@ -94,19 +99,22 @@ class _loginPageState extends State<LoginPage> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.black87,
-        
+        // hasNotch:true,
         child: new Row(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            // IconButton(
-            //   color: Colors.red,
-            //   padding: EdgeInsets.all(20.0),
-            //   icon: new Icon(Icons.video_library, size: 40.0,),
-            //   tooltip: 'Html here',
-            //   onPressed: () {Navigator.of(context).push(
-            //             new MaterialPageRoute(builder: (BuildContext context)
-            //             =>new HtmlContent()));},
-            // ),
+            Opacity(
+              opacity: 0.0,
+              child: IconButton(
+                color: Colors.red,
+                padding: EdgeInsets.all(20.0),
+                icon: new Icon(Icons.video_library, size: 40.0,),
+                tooltip: 'Html here',
+                onPressed: () {Navigator.of(context).push(
+                          new MaterialPageRoute(builder: (BuildContext context)
+                          =>new HtmlContent()));},
+              ),
+            ),
           ],
         ),
       ),
