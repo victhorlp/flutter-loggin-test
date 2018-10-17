@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loggin_test/auth.dart';
+import 'package:flutter_loggin_test/html_page.dart';
+import '';
 
 class LoginPage extends StatefulWidget {
   LoginPage({this.auth, this.onSignedIn});
@@ -71,7 +73,8 @@ class _loginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text('Flutter login demo'), ),
+      appBar: new AppBar(
+        title: new Text('Flutter login demo'), ),
       body: new Container(
         padding: EdgeInsets.all(16.0),
         child: new Form(
@@ -80,6 +83,31 @@ class _loginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: buildInputs() + buildSubmitButtons(),
           ),
+        ),
+      ),
+      floatingActionButtonLocation:  FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.widgets),
+        onPressed: (){},
+        backgroundColor: Colors.red,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.black87,
+        // hasNotch: true,
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          // padding: EdgeInsets.all(8.0),
+          children: <Widget>[
+            IconButton(
+              color: Colors.red,
+              padding: EdgeInsets.all(20.0),
+              icon: new Icon(Icons.video_library, size: 40.0,),
+              tooltip: 'Html here',
+              onPressed: () {Navigator.of(context).push(
+                        new MaterialPageRoute(builder: (BuildContext context)
+                        =>new HtmlContent()));},
+            ),
+          ],
         ),
       ),
     );
