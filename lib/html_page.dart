@@ -13,6 +13,9 @@ class _HtmlContent extends State<HtmlContent> {
 
   @override
   Widget build(BuildContext context){
+    //Supports <p> / <em> / <b> / <img> / <video> / /<h1,2,3,4,5,6>
+    //The video needs to be configured into Android and IOS before adding the HTML
+    // https://pub.dartlang.org/packages/flutter_html_view
     String html = '''
       <h1>Text H1 here</h1>
       <h2>Text H2 here</h2>
@@ -23,10 +26,6 @@ class _HtmlContent extends State<HtmlContent> {
       <img src="https://www.freelogodesign.org/Content/img/logo-ex-7.png">
       <p>There is a paragrath here.</p>
       <h1 class="edit"> A edited H1 here </h1>
-
-      <style>
-        .edit {fontsize: 25px; color: red;}
-      </style>
     ''';
     return new Scaffold(
       appBar: new AppBar(
