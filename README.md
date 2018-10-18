@@ -36,7 +36,8 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
   <br>-> Add Log out
 
 ### Developer Branch Updates
-  <br>-> Remove Android Usage;
+
+  -> Remove Android Usage;
   <br>-> Add HTML dependency for HTML usage (it's very limited at the moment);
   <br>-> Add BottomNavigatorBar with Floating Action Button;
   <br>-> Add Improved Validations;
