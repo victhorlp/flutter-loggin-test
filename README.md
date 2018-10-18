@@ -37,7 +37,7 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
 
 ## Developer Branch Updates
 
-  -> Remove Android Usage;
+  -> Remove Android Usage (many issues);
   <br>-> Add HTML dependency for HTML usage (it's very limited at the moment);
   <br>-> Add BottomNavigatorBar with Floating Action Button;
   <br>-> Add Improved Validations;
@@ -45,6 +45,7 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
   <br>-> Update Logged in page;
   <br>-> Add firebase_database, Simple_post, for a simple example of post data;
   <br>-> Add Custom buttons to create content for;
+  <br>-> Add Android Usage;
 
 
 
