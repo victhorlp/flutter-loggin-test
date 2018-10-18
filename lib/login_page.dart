@@ -50,7 +50,7 @@ class _loginPageState extends State<LoginPage> {
       }
       catch (e) {
         showDialog(
-        context: context,
+        context: context, 
         builder: (BuildContext context) {return  AlertDialog(
           title: new Text('Unidentified Username or Password!', style: new TextStyle(color: Colors.red),));
         });
@@ -119,12 +119,6 @@ class _loginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  // List<Widget> validatorEmailInput() {
-  //   var ans1 = (value) => value.isEmpty ? 'Email can\'t be empty' : null;
-  //   var ans2 = (value) => value.isEmpty ? 'Password can\'t be empty' : null;
-  //   return [validator: ans1];
-  // }
 
   List<Widget> buildInputs() {
     return [

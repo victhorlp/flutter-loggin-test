@@ -3,8 +3,6 @@
 A new Flutter project. 
 Following the tutorial.
 
-This is not configured for android, only for IOS.
-
 ## Getting Started
 
 For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
@@ -36,3 +34,16 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
 **part6:** https://www.youtube.com/watch?v=GDrlQ0L4ogg&t=561s
   <br>-> Add a homepage
   <br>-> Add Log out
+
+### Developer Branch Updates
+  <br>-> Remove Android Usage;
+  <br>-> Add HTML dependency for HTML usage (it's very limited at the moment);
+  <br>-> Add BottomNavigatorBar with Floating Action Button;
+  <br>-> Add Improved Validations;
+  <br>-> Add Firebase_database and Firebase_core dependency;
+  <br>-> Update Logged in page;
+  <br>-> Add firebase_database, Simple_post, for a simple example of post data;
+
+
+
+
