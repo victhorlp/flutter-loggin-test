@@ -50,11 +50,10 @@ class _loginPageState extends State<LoginPage> {
       }
       catch (e) {
         showDialog(
-          context: context,
-          builder: (BuildContext context) {return  AlertDialog(
-            title: new Text(e.toString(), style: new TextStyle(color: Colors.red),));
-          }
-        );
+        context: context,
+        builder: (BuildContext context) {return  AlertDialog(
+          title: new Text('Unidentified Username or Password!', style: new TextStyle(color: Colors.red),));
+        });
         print('Errors: $e');
       }
     }
@@ -121,16 +120,32 @@ class _loginPageState extends State<LoginPage> {
     );
   }
 
+  // List<Widget> validatorEmailInput() {
+  //   var ans1 = (value) => value.isEmpty ? 'Email can\'t be empty' : null;
+  //   var ans2 = (value) => value.isEmpty ? 'Password can\'t be empty' : null;
+  //   return [validator: ans1];
+  // }
+
   List<Widget> buildInputs() {
     return [
       new TextFormField( 
         decoration: new InputDecoration(labelText: 'Email'), 
-        validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
+        validator: (value){ 
+          if(value.isEmpty){ return 'Email can\'t be empty'; }
+          else if (!value.contains('@')) { return 'This isn\'t correctly formated'; }
+          else{}
+        },
+        // validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
         onSaved: (value) => _email = value, //saves in the variable the info
       ),
       new TextFormField( 
         decoration: new InputDecoration(labelText: 'Password'), 
-        validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
+        validator: (value){ 
+          if(value.isEmpty){ return 'Password can\'t be empty'; }
+          else if (value.length < 6) { return 'Passwords shouldn\'t be lower than 6!'; }
+          else{}
+        },
+        // validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
         onSaved: (value) => _password = value, //saves in the variable the info
         obscureText: true,
       ),
