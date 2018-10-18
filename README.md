@@ -44,6 +44,7 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
   <br>-> Add Firebase_database and Firebase_core dependency;
   <br>-> Update Logged in page;
   <br>-> Add firebase_database, Simple_post, for a simple example of post data;
+  <br>-> Add Custom buttons to create content for;
 
 
 

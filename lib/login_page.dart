@@ -15,6 +15,7 @@ enum FormType {
   register
 }
 
+//==========================| The APP |========================================|
 class _loginPageState extends State<LoginPage> {
   //Variables
   final formKey = new GlobalKey<FormState>();
@@ -72,7 +73,7 @@ class _loginPageState extends State<LoginPage> {
       _formType = FormType.login;     
     });
   }
-
+//======================| Body |==================================|
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -119,7 +120,9 @@ class _loginPageState extends State<LoginPage> {
       ),
     );
   }
+//======================| END Body |==================================|
 
+//======================| Body PARTS|==================================|
   List<Widget> buildInputs() {
     return [
       new TextFormField( 
@@ -171,5 +174,7 @@ class _loginPageState extends State<LoginPage> {
       ];
     }
   }
+//======================| END Body PARTS|==================================|
 }
+//========================| END The APP |=====================================|
 
