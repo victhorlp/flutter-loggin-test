@@ -35,7 +35,7 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
   <br>-> Add a homepage
   <br>-> Add Log out
 
-### Developer Branch Updates
+## Developer Branch Updates
 
   -> Remove Android Usage;
   <br>-> Add HTML dependency for HTML usage (it's very limited at the moment);
