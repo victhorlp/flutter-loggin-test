@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loggin_test/auth.dart';
 import 'fire_posts/simple_post.dart';
 import 'fire_posts/crud_post.dart';
+import 'fire_posts/image_post.dart';
 
 //==========================| The APP |========================================|
 class HomePage extends StatelessWidget {
@@ -68,31 +69,30 @@ class HomePage extends StatelessWidget {
             // |================================> Image Post / Cloud FireStore
             new RaisedButton(
               padding: new EdgeInsets.all(20.0),
-              color: Colors.red[800],
+              color: Colors.yellow[800],
               splashColor: Colors.red[300],
               child: Text('Image Upload',style: TextStyle(
                 fontSize: 20.0, 
-                color: Colors.white
+                color: Colors.black
                 ),),
-              onPressed: () {},
+              onPressed: () {Navigator.push(context, 
+                new MaterialPageRoute(builder: (context) => new ImagePost()));},
             ),
             new Opacity(
               opacity: 0.0,
               child: new Text('Empty here'),
             ),
             // |================================> chat?
-            new Opacity(
-              opacity: 0.2,
-              child: new RaisedButton(
-                padding: new EdgeInsets.all(20.0),
-                color: Colors.black87,
-                splashColor: Colors.red[300],
-                child: Text('Chat? (undecided)',style: TextStyle(
-                  fontSize: 20.0, 
-                  color: Colors.white
-                  ),),
-                onPressed: () {},
-              ),
+
+            new RaisedButton(
+              padding: new EdgeInsets.all(20.0),
+              color: Colors.red[800],
+              splashColor: Colors.red[300],
+              child: Text('Chat? (undecided)',style: TextStyle(
+                fontSize: 20.0, 
+                color: Colors.white
+                ),),
+              onPressed: () {},
             ),
             new Opacity(
               opacity: 0.0,

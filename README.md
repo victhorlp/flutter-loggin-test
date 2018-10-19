@@ -47,7 +47,8 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
   <br>-> Add Custom buttons to create content for;
   <br>-> Add Android Usage;
   <br>-> Add CRUD cloud firestore;
-  <br>-> Upgrade Validation in CRUD Pages (Add / Edit / Delete);
+  <br>-> Upgrade Validation in CRUD Pages (Add / Edit / Delete)
+  <br>-> Following upload file tutorial: https://www.youtube.com/watch?reload=9&v=Y3AtNC684vg
 
 
 
