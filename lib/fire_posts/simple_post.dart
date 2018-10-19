@@ -70,17 +70,29 @@ class _PostItem extends State<SimplePost> {
                     ListTile(
                       leading: Icon(Icons.info),
                       title: TextFormField(
+                        decoration: new InputDecoration(labelText: 'User name'),
                         initialValue: "",
                         onSaved: (val) => item.title = val,
-                        validator: (val) => val == "" ? val : null,
+                        validator: (val) {
+                          if(val.isEmpty){return 'It shouldn\'t be empty';}
+                          else if (val.contains(' ')) {return 'There Shouldn\'t be any spaces';}
+                          else if (val.contains('@')) {return 'This is not a email';}
+                          else{}
+                        }
                       ),
                     ),
                     ListTile(
                       leading: Icon(Icons.info),
                       title: TextFormField(
+                        decoration: new InputDecoration(labelText: 'subject'),
                         initialValue: '',
                         onSaved: (val) => item.body = val,
-                        validator: (val) => val == "" ? val : null,
+                        // validator: (val) => val == "" ? val : null,
+                        validator: (val) {
+                          if(val.isEmpty){return 'It shouldn\'t be empty';}
+                          else if (val.contains('@')) {return 'This is not a email';}
+                          else{}
+                        }
                       ),
                     ),
                     IconButton(

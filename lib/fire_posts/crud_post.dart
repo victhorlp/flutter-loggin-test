@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'crud_add.dart';
 
-//==========================| The APP |========================================|
+//==========================| The APP Part1|========================================|
 
 class CrudItem extends StatelessWidget {
-//======================| Body |==================================|
+  //======================| Body |==================================|
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +46,17 @@ class CrudItem extends StatelessWidget {
       ),
     );
   }
+  //======================| End Body |==================================|
+
 }
 
+//==========================| The APP Part2|========================================|
 class SimplePostThenView extends StatelessWidget {
   final List<DocumentSnapshot> documents;
 
   SimplePostThenView({this.documents});
 
+//======================| Body |==================================|
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -65,7 +69,7 @@ class SimplePostThenView extends StatelessWidget {
             title: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5.0),
-                border: Border.all(color: Colors.white),
+                border: Border.all(color: Colors.black45),
               ),
               padding: EdgeInsets.all(5.0),
               child: Row(
@@ -75,59 +79,26 @@ class SimplePostThenView extends StatelessWidget {
                         ? Text(title)
                         : TextFormField(
                             initialValue: title,
-                            onFieldSubmitted: (String item) {
-                              Firestore.instance
-                                  .runTransaction((transaction) async {
-                                DocumentSnapshot snapshot = await transaction
-                                    .get(documents[index].reference);
-
-                                await transaction.update(
-                                    snapshot.reference, {'title': item});
-
-                                await transaction.update(snapshot.reference,
-                                    {"editing": !snapshot['editing']});
-                              });
-                            },
+                            onFieldSubmitted: (String item) { 
+                              handleTextEditingValidation(index, item); },
                           ),
                   ),
                   Text("$score"),
                   Column(
                     children: <Widget>[
                       IconButton(
-                        onPressed: () {
-                          Firestore.instance
-                              .runTransaction((Transaction transaction) async {
-                            DocumentSnapshot snapshot = await transaction
-                                .get(documents[index].reference);
-                            await transaction.update(snapshot.reference,
-                                {'score': snapshot['score'] + 1});
-                          });
-                        },
+                        onPressed: () { handleAddScoreValidation(index); },
                         icon: Icon(Icons.arrow_upward),
                       ),
                       IconButton(
-                        onPressed: () {
-                          Firestore.instance
-                              .runTransaction((Transaction transaction) async {
-                            DocumentSnapshot snapshot = await transaction
-                                .get(documents[index].reference);
-                            await transaction.update(snapshot.reference,
-                                {'score': snapshot['score'] - 1});
-                          });
-                        },
+                        onPressed: () { handleRemoveScoreValidation(index); },
                         icon: Icon(Icons.arrow_downward),
                       ),
                     ],
                   ),
                   IconButton(
                     icon: Icon(Icons.delete),
-                    onPressed: () {
-                      Firestore.instance.runTransaction((transaction) async {
-                        DocumentSnapshot snapshot =
-                            await transaction.get(documents[index].reference);
-                        await transaction.delete(snapshot.reference);
-                      });
-                    },
+                    onPressed: () { handleDeleteAlert(index, context); },
                   )
                 ],
               ),
@@ -143,14 +114,71 @@ class SimplePostThenView extends StatelessWidget {
       },
     );
   }
+//======================| END Body |==================================|
+
+//==================| Body PARTS / Validations|=======================|
+  // Text editing
+  void handleTextEditingValidation(var index, String item){
+    Firestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot snapshot = await transaction.get(documents[index].reference);
+      await transaction.update( snapshot.reference, {'title': item});
+      await transaction.update(snapshot.reference, {"editing": !snapshot['editing']});
+    });
+  }
+  // Add Score
+  void handleAddScoreValidation( var index){
+    Firestore.instance.runTransaction((Transaction transaction) async {
+      DocumentSnapshot snapshot = await transaction.get(documents[index].reference);
+      if(snapshot['score'] == 10){
+        await transaction.update(snapshot.reference,
+          {'score': snapshot['score'] + 0});
+      }else{
+        await transaction.update(snapshot.reference,
+          {'score': snapshot['score'] + 1});
+      }
+    });
+  }
+  // Remove Score
+  void handleRemoveScoreValidation( var index){
+    Firestore.instance.runTransaction((Transaction transaction) async {
+      DocumentSnapshot snapshot = await transaction.get(documents[index].reference);
+      if(snapshot['score'] == 0){
+        await transaction.update(snapshot.reference, {'score': snapshot['score'] - 0});
+      }else{
+        await transaction.update(snapshot.reference, {'score': snapshot['score'] - 1});
+      }
+    });
+  }
+  // Delete Content
+  void handleDeleteAlert(var index, var c){
+    showDialog(
+      context: c,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: new Text('Delete Data'),
+          content: new Text('Are you sure you want to do this?'),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text('Cancel'),
+              onPressed: (){ Navigator.of(context).pop(); }
+            ),
+            new FlatButton(
+              child: new Text('Delete'),
+              onPressed: (){
+                Firestore.instance.runTransaction((transaction) async {
+                  DocumentSnapshot snapshot = await transaction.get(documents[index].reference);
+                  await transaction.delete(snapshot.reference);
+                  Navigator.of(context).pop();
+                });
+              },
+            ),
+          ],
+        );
+      }
+    );
+  }
+//==================| END Body PARTS / Validations|=======================|
 }
-
-//======================| END body |==================================|
-
-//======================| BD items |==================================|
-
-
-//======================| END BD items |=============================|
 //========================| END The APP |=====================================|
 
 
