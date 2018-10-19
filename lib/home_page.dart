@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loggin_test/auth.dart';
 import 'fire_posts/simple_post.dart';
+import 'fire_posts/crud_post.dart';
 
 //==========================| The APP |========================================|
 class HomePage extends StatelessWidget {
@@ -52,12 +53,13 @@ class HomePage extends StatelessWidget {
             // |================================> CRUD Post / Cloud Firestore
             new RaisedButton(
               padding: new EdgeInsets.all(20.0),
-              color: Colors.red[800],
+              color: Colors.yellow[800],
               splashColor: Colors.yellow[300],
               child: Text('Cloud Firestore db CRUD',style: TextStyle(
                 fontSize: 20.0, 
                 color: Colors.white),),
-              onPressed: () {  },
+              onPressed: () { Navigator.push(context, 
+                new MaterialPageRoute(builder: (context) => new CrudItem())); },
             ),
             new Opacity(
               opacity: 0.0,

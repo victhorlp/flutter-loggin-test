@@ -46,6 +46,7 @@ For Pubspec.yaml: https://pub.dartlang.org/packages/firebase_auth
   <br>-> Add firebase_database, Simple_post, for a simple example of post data;
   <br>-> Add Custom buttons to create content for;
   <br>-> Add Android Usage;
+  <br>-> Add CRUD cloud firestore;
 
 
 

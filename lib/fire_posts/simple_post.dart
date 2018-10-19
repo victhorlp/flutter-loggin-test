@@ -55,7 +55,7 @@ class _PostItem extends State<SimplePost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(),
+      appBar: new AppBar( title: new Text('Firebase / Simple post Demo'), ),
       resizeToAvoidBottomPadding: false,
       body: Column(
         children: <Widget>[
