@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
               splashColor: Colors.yellow[300],
               child: Text('Cloud Firestore db CRUD',style: TextStyle(
                 fontSize: 20.0, 
-                color: Colors.white),),
+                color: Colors.black),),
               onPressed: () { Navigator.push(context, 
                 new MaterialPageRoute(builder: (context) => new CrudItem())); },
             ),
